@@ -1,0 +1,33 @@
+<!-- Replace Fontname with the name of your font. -->
+<!-- Replace Typefoundry with the name of your foundry. -->
+<!-- Replace Type Designer Name with your name. -->
+<!-- Replace the URLs. -->
+<!-- For more info, see: github.com/mekkablue/webfontmaker -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata version="1.0">
+	<uniqueid id="com.typefoundry.fontname.x.xxx"/>
+	<vendor name="Typefoundry" url="http://www.typefoundry.com"/>
+	<credits>
+		<credit name="Type Designer Name" url="http://www.typefoundry.com/" role="Design"/>
+		<credit name="Rainer Erich Scheichelbauer" url="http://mekkablue.com/" role="Webfont Scripting"/>
+	</credits>
+	<description>
+		<text lang="en">
+			This WOFF was created with the mekkablue webfontmaker 0.1.
+		</text>
+	</description>
+	<license url="http://www.typefoundry.com/licensing" id="Web-EULA-1.0">
+		<text lang="en">
+			Web License 1.0
+			For details see http://www.typefoundry.com/licensing
+		</text>
+	</license>
+	<licensee name="Licensee" />
+	<copyright>
+		<text lang="en">Copyright © 2013 Typefoundry. All rights reserved.</text>
+	</copyright>
+	<trademark>
+		<text lang="en">This typeface is a trademark of Typefoundry.</text>
+	</trademark>
+</metadata>
