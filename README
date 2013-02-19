@@ -45,6 +45,13 @@ ln -s /Applications/sfnt2woff /usr/local/bin/
 
 - Create your own Meta.xml or use the one provided in this repository. More Info: http://www.w3.org/TR/WOFF/
 
+6. TTX/FontTools 2.3 (revision 580):
+
+- These are only necessary for injecting a dummy DSIG into the TTF and the OTF, making OT features work in MS Word. The first line will take a while, the last line will prompt you for your administrator password:
+svn co -r 580 https://fonttools.svn.sourceforge.net/svnroot/fonttools /Applications/fonttools/
+cd /Applications/fonttools/trunk/
+sudo python setup.py install
+
 
 
 
