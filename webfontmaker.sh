@@ -29,7 +29,6 @@ printf 'Open($1)\nGenerate($1:r + ".svg")\nScaleToEm(2048)\nRoundToInt()\nGenera
 # Create the DSIG XML for later:
 echo '<?xml version="1.0" encoding="ISO-8859-1"?>\n<ttFont sfntVersion="\\x00\\x01\\x00\\x00" ttLibVersion="2.2">\n<DSIG>\n   <hexdata>\n     00000001 00000000\n   </hexdata>\n</DSIG>\n</ttFont>\n' > dsig.ttx
 
-
 # Process all OTFs in the folder:
 for file in *.otf; do
 	
@@ -49,28 +48,25 @@ for file in *.otf; do
 	
 	# Make SVG and TTF:
 	echo
-	echo Creating $ttfFont ...
+	echo Creating $ttfFont and $svgFont ...
 	fontforge -script makeweb.pe $otfFont
 	
 	# Fix SVG files:
 	echo
-	echo Creating $svgFont ...
+	echo Fixing $svgFont ...
 	sed '/^Created by .*$/d' $svgFont > tmp.svg; mv tmp.svg $svgFont
 	sed 's/^<svg>/<svg xmlns="http:\/\/www.w3.org\/2000\/svg">/' $svgFont > tmp.svg; mv tmp.svg $svgFont
 	
 	# Autohint TTF:
 	echo
-	echo Autohinting $ttfFont ...
+	echo Creating $ttfAHFont ...
 	ttfautohint $ttfFont $ttfAHFont
 	
 	# Make EOT:
 	echo
-	echo Creating $eotFont ...
-	java -jar ~/Applications/svn/sfntly-read-only/java/dist/tools/sfnttool/sfnttool.jar -e -x $ttfFont $eotFont
-	
-	echo
-	echo Autohinting $eotFont ...
-	java -jar ~/Applications/svn/sfntly-read-only/java/dist/tools/sfnttool/sfnttool.jar -e -x $ttfAHFont $eotAHFont
+	echo Creating $eotFont and $eotAHFont ...
+	java -jar /Applications/sfntly/java/dist/tools/sfnttool/sfnttool.jar -e -x $ttfFont $eotFont
+	java -jar /Applications/sfntly/java/dist/tools/sfnttool/sfnttool.jar -e -x $ttfAHFont $eotAHFont
 
 	# make WOFF and its HTML files:
 	echo

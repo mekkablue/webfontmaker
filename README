@@ -25,9 +25,9 @@ brew linkapps
 
 2. Install sfntly:
 
-svn checkout http://sfntly.googlecode.com/svn/trunk/ /Applications/sfntly/
+svn co http://sfntly.googlecode.com/svn/trunk/ /Applications/sfntly/
 cd /Applications/sfntly/java/
-sudo ant
+ant
 
 3. Install WOFF Tools:
 
