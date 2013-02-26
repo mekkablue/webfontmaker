@@ -7,6 +7,7 @@ rm *.css
 rm *.eot
 rm *.ttx
 rm *.ttf
+rm *DSIG.otf
 
 # Check if a version number was passed as argument:
 if [[ $1 ]]; then
@@ -36,6 +37,7 @@ for file in *.otf; do
 	# and calculate the other names:
 	basename=`echo "$file" | sed -e "s/\.otf//"`
 	otfFont="$basename.otf"
+	otfDSIGFont="$basename-DSIG.otf"
 	ttfFont="$basename.ttf"
 	ttfAHFont="$basename-autohinted.ttf"
 	eotFont="$basename.eot"
@@ -81,7 +83,7 @@ for file in *.otf; do
 	echo
 	echo Injecting DSIG into $otfFont, $ttfFont and $ttfAHFont ...
 	ttx -m $otfFont dsig.ttx
-	rm $otfFont; mv dsig.ttf $otfFont
+	mv dsig.ttf $otfDSIGFont
 	
 	ttx -m $ttfFont dsig.ttx
 	rm $ttfFont; mv dsig.ttf $ttfFont
