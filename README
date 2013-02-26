@@ -39,7 +39,7 @@ sudo python setup.py install
 
 - Download sfnt2woff ('spline font to WOFF') for OS X from http://people.mozilla.com/~jkew/woff/ and move sfnt2woff into your Applications folder. In the Terminal, you enter:
 chmod +x /Applications/sfnt2woff
-ln -s /Applications/sfnt2woff /usr/local/bin/
+sudo ln -s /Applications/sfnt2woff /usr/local/bin/
 
 5. Meta.xml for WOFFs:
 
