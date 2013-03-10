@@ -30,15 +30,13 @@ ant
 
 3. Install sfnt2woff:
 
-- Download sfnt2woff ('spline font to WOFF') for OS X from http://people.mozilla.com/~jkew/woff/ and move sfnt2woff into your Applications folder.
-(Hint: opt-click the 'precompiled version for Mac OS X')
-In the Terminal, you enter:
+- Download sfnt2woff ('spline font to WOFF') for OS X from http://people.mozilla.com/~jkew/woff/ (hint: opt-click the 'precompiled version for Mac OS X').
+- Move sfnt2woff into the Applications folder.
+- In the Terminal, you enter:
 chmod +x /Applications/sfnt2woff
+mkdir /usr/local/bin/
 sudo ln -s /Applications/sfnt2woff /usr/local/bin/
 
-4. Meta.xml for WOFFs:
-
-- Create your own Meta.xml or use the one provided in this repository. More Info: http://www.w3.org/TR/WOFF/
 
 
 
@@ -47,6 +45,7 @@ sudo ln -s /Applications/sfnt2woff /usr/local/bin/
 
 USAGE INSTRUCTIONS
 
+- Create your own Meta.xml or use the one provided in this repository. More Info: http://www.w3.org/TR/WOFF/
 - Put Meta.xml, webfontmaker.sh and any number of OTF files in the same folder.
 - In Terminal, navigate into that folder, then type:
 sh webfontmaker.sh
