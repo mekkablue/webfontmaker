@@ -2,12 +2,9 @@
 # x.xxx is an optional version number
 
 # Remove files from previous iterations:
-rm *.html
-rm *.css
 rm *.eot
-rm *.ttx
 rm *.ttf
-rm *DSIG.otf
+rm *.svg
 
 # Check if a version number was passed as argument:
 if [[ $1 ]]; then
@@ -27,8 +24,6 @@ sed 's/x.xxx/$version/' $metadataSRC > $metadata
 # unfortunately, fontforge -c seems to be broken...?
 printf 'Open($1)\nGenerate($1:r + ".svg")\nScaleToEm(2048)\nRoundToInt()\nGenerate($1:r + ".ttf")' > makeweb.pe
 
-# Create the DSIG XML for later:
-echo '<?xml version="1.0" encoding="ISO-8859-1"?>\n<ttFont sfntVersion="\\x00\\x01\\x00\\x00" ttLibVersion="2.2">\n<DSIG>\n   <hexdata>\n     00000001 00000000\n   </hexdata>\n</DSIG>\n</ttFont>\n' > dsig.ttx
 
 # Process all OTFs in the folder:
 for file in *.otf; do
@@ -37,10 +32,9 @@ for file in *.otf; do
 	# and calculate the other names:
 	basename=`echo "$file" | sed -e "s/\.otf//"`
 	otfFont="$basename.otf"
-	otfDSIGFont="$basename-DSIG.otf"
 	ttfFont="$basename.ttf"
-	ttfAHFont="$basename-autohinted.ttf"
 	eotFont="$basename.eot"
+	ttfAHFont="$basename-autohinted.ttf"
 	eotAHFont="$basename-autohinted.eot"
 	woffFont="$basename.woff"
 	svgFont="$basename.svg"
@@ -70,31 +64,16 @@ for file in *.otf; do
 	java -jar /Applications/sfntly/java/dist/tools/sfnttool/sfnttool.jar -e -x $ttfFont $eotFont
 	java -jar /Applications/sfntly/java/dist/tools/sfnttool/sfnttool.jar -e -x $ttfAHFont $eotAHFont
 
-	# make WOFF and its HTML files:
+	# Make WOFF:
 	echo
 	echo Creating $woffFont ...
 	sfnt2woff -v $version -m $metadata $otfFont
-	woff-all $woffFont
-	
-	# Inject a Dummy DSIG table into the OTF & the TTF so they'll work in MS Word.
-	# Source: http://typedrawers.com/discussion/192/making-otttf-layout-features-work-in-ms-word-2010
-	# There's a bug in the current svn revision (612), so you need the latest stable release 2.3 (580):
-	# svn co -r 580 https://fonttools.svn.sourceforge.net/svnroot/fonttools /Applications/fonttools/
-	echo
-	echo Injecting DSIG into $otfFont, $ttfFont and $ttfAHFont ...
-	ttx -m $otfFont dsig.ttx
-	mv dsig.ttf $otfDSIGFont
-	
-	ttx -m $ttfFont dsig.ttx
-	rm $ttfFont; mv dsig.ttf $ttfFont
-	
-	ttx -m $ttfAHFont dsig.ttx
-	rm $ttfAHFont; mv dsig.ttf $ttfAHFont
+	# woff-all $woffFont
+
 done
 
 # Clean up:
 rm $metadata
 rm makeweb.pe
-rm *.ttx
 
 echo
