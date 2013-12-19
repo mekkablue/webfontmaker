@@ -1,6 +1,14 @@
+IMPORTANT UPDATE
+
+Don’t use webfontmaker. I recommend http://fontprep.com instead. I will leave this up here for reference, but it is not supported anymore. The installation instructions are outdated. If you cannot get it to work, please download FontPrep.
+
+
+
+
+
 ABOUT
 
-webfontmaker.sh takes any number of PS-flavored OTF files and creates corresponding TTF (unhinted and autohinted), EOT (unhinted and autohinted), WOFF and SVG. Running the script again will overwrite all previous output.
+webfontmaker.sh takes any number of PS-flavored OTF files and creates corresponding TTF (unhinted and autohinted), EOT (unhinted and autohinted), (PS-flavored) WOFF and SVG. Running the script again will overwrite all previous output.
 
 
 
