@@ -1,6 +1,6 @@
 IMPORTANT UPDATE
 
-Don’t use webfontmaker. I recommend http://fontprep.com instead. I will leave this up here for reference, but it is not supported anymore. The installation instructions are outdated. If you cannot get it to work, please download FontPrep.
+Don’t use webfontmaker. Glyphs 2 can write webfonts out of the box. I will leave this up here for reference, but it is not supported anymore. The installation instructions are outdated. If you cannot get it to work, please download Glyphs 2 or use FontSquirrel.
 
 
 
